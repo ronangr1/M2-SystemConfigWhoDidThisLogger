@@ -1,0 +1,21 @@
+{
+    "name": "ronangr1/module-admin-last-modified",
+    "description": "Adds the last contributor who pressed the save button in the Magento 2 backoffice",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ronan Guérin",
+            "email": "guerin.ronan@aol.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Ronangr1\\AdminLastModified\\": ""
+        }
+    }
+}

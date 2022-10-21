@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="admin_system_config_save">
+        <observer instance="Ronangr1\AdminLastModified\Observer\Adminhtml\SystemConfigSave" name="ronangr1_admin_last_modified_admin_system_config_save"/>
+    </event>
+</config>
