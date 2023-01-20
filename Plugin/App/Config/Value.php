@@ -38,7 +38,7 @@ class Value
                     $date = new \DateTime;
                     $this->recordService->record([
                         "user" => sprintf("%s (%s)", $user->getName(), $user->getEmail()),
-                        "create_at" => $date->format("Y:m:d H:i:s"),
+                        "created_at" => $date->format("Y:m:d H:i:s"),
                         "path" => $subject->getPath(),
                         "new_value" => $subject->getValue(),
                         "old_value" => $subject->getOldValue()
