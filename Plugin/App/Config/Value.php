@@ -45,7 +45,6 @@ class Value
                     ]);
                 }
             } catch (\Exception $e) {
-                var_dump($e->getMessage()); exit;
                 $this->logger->debug($e->getMessage());
             }
         }
