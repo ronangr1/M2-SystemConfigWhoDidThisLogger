@@ -24,27 +24,22 @@ use Ronangr1\SystemConfigWhoDidThisLogger\Service\System\Config\Record as Record
 class SystemConfigSave implements ObserverInterface
 {
     private Session $authSession;
-    private ManagerInterface $messageManager;
     private Json $serializer;
     private RecordService $recordService;
-    private RequestInterface $request;
 
     /**
      * @param Session $authSession
      * @param Json $serializer
-     * @param RequestInterface $request
      * @param RecordService $recordService
      */
     public function __construct(
         Session          $authSession,
         Json             $serializer,
-        RequestInterface $request,
         RecordService $recordService
     )
     {
         $this->authSession = $authSession;
         $this->serializer = $serializer;
-        $this->request = $request;
         $this->recordService = $recordService;
     }
 
@@ -60,7 +55,7 @@ class SystemConfigSave implements ObserverInterface
                 "user" => sprintf("%s (%s)", $user->getName(), $user->getEmail()),
                 "create_at" => $date->format("Y:m:d H:i:s"),
                 "section" => $observer->getRequest()->getParam("section"),
-                "values" => $this->serializer->serialize($observer->getRequest()->getParam("groups"))
+                "values" => json_encode($observer->getRequest()->getParam("groups"), JSON_UNESCAPED_SLASHES)
             ]);
         }
     }
