@@ -12,6 +12,5 @@ use Monolog\Logger;
 class Handler extends Base
 {
     protected $loggerType = Logger::INFO;
-
-    protected $fileName = "/var/log/who_did_this.log";
+    protected $fileName = "/var/log/system/config/who_did_this.log";
 }
