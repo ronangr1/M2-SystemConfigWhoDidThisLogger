@@ -1,4 +1,4 @@
-# Who the fuck saved this sytem config on the production server ? :smirk:
+# Who the fuck saved this system config on the production server ? :smirk:
 
 
 - [Setup](#setup)
