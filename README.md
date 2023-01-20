@@ -18,7 +18,9 @@ Magento 2 Open Source or Commerce edition is required.
 Run the following command:
 
 ```
-cp -R Ronangr1/SystemConfigWhoDidThisLogger /path/to/magento/app/code/
+git clone https://github.com/ronangr1/M2-SystemConfigWhoDidThisLogger.git SystemConfigWhoDidThisLogger
+mkdir /path/to/your/magento/app/code/Ronangr1
+cp -R SystemConfigWhoDidThisLogger /path/to/magento/app/code/Ronangr1/
 ```
 
 ### Setup the module
