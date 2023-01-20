@@ -1,6 +1,6 @@
 {
-    "name": "ronangr1/module-admin-last-modified",
-    "description": "Adds the last contributor who pressed the save button in the Magento 2 backoffice",
+    "name": "ronangr1/module-system-config-who-did-this-logger",
+    "description": "Log every system config changes",
     "type": "magento2-module",
     "license": "MIT",
     "authors": [
@@ -15,7 +15,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "Ronangr1\\AdminLastModified\\": ""
+            "Ronangr1\\SystemConfigWhoDidThisLogger\\": ""
         }
     }
 }
