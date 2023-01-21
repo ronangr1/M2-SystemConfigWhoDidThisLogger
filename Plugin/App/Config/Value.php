@@ -32,8 +32,8 @@ class Value
     public function afterIsValueChanged(\Magento\Framework\App\Config\Value $subject, $result)
     {
         if($result) {
-            $user = $this->authSession->getUser();
             try {
+                $user = $this->authSession->getUser();
                 if ($user) {
                     $date = new \DateTime;
                     $this->recordService->record([
