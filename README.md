@@ -35,7 +35,7 @@ bin/magento setup:upgrade
 
 ## Features
 
-### Added a log file to track who is saving the system configuration
+### Add a log file to track who is saving the system configuration
 
 If, like me, you are tired of being told that configurations have been changed but no one is reporting... this Magento module is part of the solution.
 
