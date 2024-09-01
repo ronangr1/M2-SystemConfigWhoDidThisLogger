@@ -8,7 +8,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
     <menu>
         <add id="Ronangr1_SystemConfigWhoDidThisLogger::ronangr1_systemconfigwhodidthislogger_configrecord"
-             title="ConfigRecord" module="Ronangr1_SystemConfigWhoDidThisLogger" sortOrder="9999"
+             title="Config Records" module="Ronangr1_SystemConfigWhoDidThisLogger" sortOrder="9999"
              resource="Magento_Backend::content" parent="Magento_Backend::stores_settings"
              action="configrecord/configrecord/index"/>
     </menu>
