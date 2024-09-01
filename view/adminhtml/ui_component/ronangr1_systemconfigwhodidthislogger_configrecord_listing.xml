@@ -158,6 +158,9 @@
                 <indexField>entity_id</indexField>
                 <resizeEnabled>false</resizeEnabled>
                 <resizeDefaultWidth>107</resizeDefaultWidth>
+                <fieldClass>
+                    <class name="revert-action">true</class>
+                </fieldClass>
             </settings>
         </actionsColumn>
 	</columns>
