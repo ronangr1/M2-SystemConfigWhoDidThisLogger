@@ -9,25 +9,15 @@ declare(strict_types=1);
 namespace Ronangr1\SystemConfigWhoDidThisLogger\Service\System\Config;
 
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Serialize\Serializer\Json;
-use Ronangr1\SystemConfigWhoDidThisLogger\Logger\Logger as SystemConfigLogger;
+use Ronangr1\SystemConfigWhoDidThisLogger\Api\ConfigRecordRepositoryInterface;
+use Ronangr1\SystemConfigWhoDidThisLogger\Model\ConfigRecordFactory;
 
 class Record
 {
-    private SystemConfigLogger $systemConfigLogger;
-    private Json $serializer;
-
-    /**
-     * @param SystemConfigLogger $systemConfigLogger
-     * @param Json $serializer
-     */
     public function __construct(
-        SystemConfigLogger $systemConfigLogger,
-        Json               $serializer
-    )
-    {
-        $this->systemConfigLogger = $systemConfigLogger;
-        $this->serializer = $serializer;
+        private readonly ConfigRecordFactory $configRecordFactory,
+        private readonly ConfigRecordRepositoryInterface $configRecordRepository
+    ) {
     }
 
     /**
@@ -38,6 +28,8 @@ class Record
         if (empty($data)) {
             throw new LocalizedException(__("Array cannot be empty."));
         }
-        $this->systemConfigLogger->info($this->serializer->serialize($data));
+        $record = $this->configRecordFactory->create();
+        $record->setData($data);
+        $this->configRecordRepository->save($record);
     }
 }

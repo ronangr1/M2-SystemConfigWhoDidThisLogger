@@ -19,4 +19,24 @@
             </argument>
         </arguments>
     </type>
+    <preference for="Ronangr1\SystemConfigWhoDidThisLogger\Api\ConfigRecordRepositoryInterface" type="Ronangr1\SystemConfigWhoDidThisLogger\Model\ConfigRecordRepository"/>
+    <preference for="Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterface" type="Ronangr1\SystemConfigWhoDidThisLogger\Model\ConfigRecord"/>
+    <preference for="Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">system_config_record</argument>
+            <argument name="resourceModel" xsi:type="string">
+                Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord\Collection
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="ronangr1_systemconfigwhodidthislogger_configrecord_listing_data_source" xsi:type="string">
+                    Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
 </config>

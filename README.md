@@ -1,10 +1,16 @@
-# Who the fuck saved this system config on the production server ? :smirk:
+# Module for Magento 2
 
+[![Latest Stable Version](https://img.shields.io/packagist/v/ronangr1/module-systemconfigwhodidthislogger.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-systemconfigwhodidthislogger)
+[![License: MIT](https://img.shields.io/github/license/ronangr1/magento2-systemconfigwhodidthislogger.svg?style=flat-square)](./LICENSE)
+[![Packagist](https://img.shields.io/packagist/dt/ronangr1/module-systemconfigwhodidthislogger.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-systemconfigwhodidthislogger/stats)
+[![Packagist](https://img.shields.io/packagist/dm/opengento/module-hoodoor.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-systemconfigwhodidthislogger/stats)
+
+This module allows you to record any changes made to the configuration of your Magento 2 application
 
 - [Setup](#setup)
-    - [Installation](#installation)
+    - [Composer installation](#composer-installation)
     - [Setup the module](#setup-the-module)
-- [Features](#features)
+- [Settings](#settings)
 - [Support](#support)
 - [Authors](#authors)
 - [License](#license)
@@ -13,14 +19,12 @@
 
 Magento 2 Open Source or Commerce edition is required.
 
-###  Installation
+###  Composer installation
 
-Run the following command:
+Run the following composer command:
 
 ```
-git clone https://github.com/ronangr1/M2-SystemConfigWhoDidThisLogger.git SystemConfigWhoDidThisLogger
-mkdir /path/to/your/magento/app/code/Ronangr1
-cp -R SystemConfigWhoDidThisLogger /path/to/magento/app/code/Ronangr1/
+composer require ronangr1/module-systemconfigwhodidthislogger
 ```
 
 ### Setup the module
@@ -33,22 +37,18 @@ bin/magento setup:upgrade
 
 **If you are in production mode, do not forget to recompile and redeploy the static resources.**
 
-## Features
+## Settings
 
-### Add a log file to track who is saving the system configuration
-
-If, like me, you are tired of being told that configurations have been changed but no one is reporting... this Magento module is part of the solution.
-
-This module provides a new logger that is populated as soon as a contributor presses the "Save config" button in the backoffice.
+No settings needed.
 
 ## Support
 
-Raise a new [request](https://github.com/ronangr1/M2-AddFakeTextButton/issues) to the issue tracker.
+Raise a new [request](https://github.com/opengento/magento2-hoodoor-login/issues) to the issue tracker.
 
 ## Authors
 
-- **ronangr1** - [![Twitter Follow](https://img.shields.io/twitter/follow/ronangr1.svg?style=social)](https://twitter.com/ronangr1)
-- **Contributors**  [![GitHub contributors](https://img.shields.io/github/contributors/opengento/magento2-module.svg?style=flat-square)](https://github.com/ronangr1/module-add-fake-text-button/graphs/contributors)
+- **ronangr1** - *Maintainer* - [![GitHub followers](https://img.shields.io/github/followers/ronangr1.svg?style=social)](https://github.com/ronangr1)
+- **Contributors** - *Contributor* - [![GitHub contributors](https://img.shields.io/github/contributors/opengento/magento2-store-path-url.svg?style=flat-square)](https://github.com/ronangr1/magento2-systemconfigwhodidthislogger/graphs/contributors)
 
 ## License
 

@@ -1,12 +1,12 @@
 {
-    "name": "ronangr1/module-system-config-who-did-this-logger",
-    "description": "Log every system config changes",
+    "name": "ronangr1/module-systemconfigwhodidthislogger",
+    "description": "This module allows you to record any changes made to the configuration of your Magento 2 application\n\n",
     "type": "magento2-module",
     "license": "MIT",
     "authors": [
         {
-            "name": "Ronan Guérin",
-            "email": "guerin.ronan@aol.com"
+            "name": "ronangr1",
+            "email": "guerin.ronan@proton.me"
         }
     ],
     "minimum-stability": "dev",

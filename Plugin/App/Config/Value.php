@@ -9,40 +9,44 @@ declare(strict_types=1);
 namespace Ronangr1\SystemConfigWhoDidThisLogger\Plugin\App\Config;
 
 use Magento\Backend\Model\Auth\Session;
+use Psr\Log\LoggerInterface;
 use Ronangr1\SystemConfigWhoDidThisLogger\Service\System\Config\Record;
 
 class Value
 {
-    private Session $authSession;
-    private Record $recordService;
 
     /**
-     * @param Session $authSession
-     * @param Record $recordService
+     * @param \Magento\Backend\Model\Auth\Session $authSession
+     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Service\System\Config\Record $recordService
+     * @param \Psr\Log\LoggerInterface $logger
      */
     public function __construct(
-        Session $authSession,
-        Record $recordService
-    )
-    {
-        $this->authSession = $authSession;
-        $this->recordService = $recordService;
+        private readonly Session $authSession,
+        private readonly Record $recordService,
+        private readonly LoggerInterface $logger
+    ) {
     }
 
-    public function afterIsValueChanged(\Magento\Framework\App\Config\Value $subject, $result)
+    /**
+     * @param \Magento\Framework\App\Config\Value $subject
+     * @param $result
+     * @return void
+     */
+    public function afterIsValueChanged(\Magento\Framework\App\Config\Value $subject, $result): void
     {
-        if($result) {
+        if ($result) {
             try {
                 $user = $this->authSession->getUser();
-                if ($user) {
-                    $date = new \DateTime;
-                    $this->recordService->record([
-                        "user" => sprintf("%s (%s)", $user->getName(), $user->getEmail()),
-                        "created_at" => $date->format("Y:m:d H:i:s"),
-                        "path" => $subject->getPath(),
-                        "new_value" => $subject->getValue(),
-                        "old_value" => $subject->getOldValue()
-                    ]);
+                if ($user->getId()) {
+                    if ($subject->getOldValue()) {
+                        $this->recordService->record([
+                            "author" => sprintf("%s (%s)", $user->getName(), $user->getEmail()),
+                            "path" => $subject->getPath(),
+                            "scope" => $subject->getScope(),
+                            "old_value" => $subject->getOldValue(),
+                            "new_value" => $subject->getValue()
+                        ]);
+                    }
                 }
             } catch (\Exception $e) {
                 $this->logger->debug($e->getMessage());

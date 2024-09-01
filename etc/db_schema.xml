@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Copyright © ronangr1. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="system_config_record" resource="default" engine="innodb" comment="system_config_record Table">
+		<column xsi:type="int" name="entity_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<constraint xsi:type="primary" referenceId="PRIMARY">
+			<column name="entity_id"/>
+		</constraint>
+		<column name="author" nullable="false" xsi:type="varchar" comment="author" length="255"/>
+        <column name="scope" nullable="false" xsi:type="varchar" comment="scope" length="255"/>
+        <column name="path" nullable="false" xsi:type="varchar" comment="path" length="255"/>
+		<column name="old_value" nullable="false" xsi:type="text" comment="old_value"/>
+		<column name="new_value" nullable="false" xsi:type="text" comment="new_value"/>
+		<column name="recorded_at" nullable="false" xsi:type="timestamp" on_update="false" default="CURRENT_TIMESTAMP" comment="recorded_at"/>
+	</table>
+</schema>
