@@ -8,19 +8,19 @@ declare(strict_types=1);
 
 namespace Ronangr1\SystemConfigWhoDidThisLogger\Api\Data;
 
-interface ConfigRecordSearchResultsInterface extends \Magento\Framework\Api\SearchResultsInterface
+use Magento\Framework\Api\SearchResultsInterface;
+
+interface ConfigRecordSearchResultsInterface extends SearchResultsInterface
 {
     /**
-     * Get ConfigRecord list.
      * @return \Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterface[]
      */
-    public function getItems();
+    public function getItems(): array;
 
     /**
-     * Set author list.
      * @param \Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterface[] $items
      * @return $this
      */
-    public function setItems(array $items);
+    public function setItems(array $items): static;
 }
 

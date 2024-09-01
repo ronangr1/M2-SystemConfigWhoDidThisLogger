@@ -3,81 +3,52 @@
  * Copyright © ronangr1. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 declare(strict_types=1);
 
 namespace Ronangr1\SystemConfigWhoDidThisLogger\Model;
 
 use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
+use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Ronangr1\SystemConfigWhoDidThisLogger\Api\ConfigRecordRepositoryInterface;
 use Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterface;
 use Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterfaceFactory;
+use Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordSearchResultsInterface;
 use Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordSearchResultsInterfaceFactory;
 use Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord as ResourceConfigRecord;
 use Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord\CollectionFactory as ConfigRecordCollectionFactory;
 
 class ConfigRecordRepository implements ConfigRecordRepositoryInterface
 {
-
     /**
-     * @var ResourceConfigRecord
-     */
-    protected $resource;
-
-    /**
-     * @var CollectionProcessorInterface
-     */
-    protected $collectionProcessor;
-
-    /**
-     * @var ConfigRecord
-     */
-    protected $searchResultsFactory;
-
-    /**
-     * @var ConfigRecordCollectionFactory
-     */
-    protected $configRecordCollectionFactory;
-
-    /**
-     * @var ConfigRecordInterfaceFactory
-     */
-    protected $configRecordFactory;
-
-
-    /**
-     * @param ResourceConfigRecord $resource
-     * @param ConfigRecordInterfaceFactory $configRecordFactory
-     * @param ConfigRecordCollectionFactory $configRecordCollectionFactory
-     * @param ConfigRecordSearchResultsInterfaceFactory $searchResultsFactory
-     * @param CollectionProcessorInterface $collectionProcessor
+     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord $resource
+     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterfaceFactory $configRecordFactory
+     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord\CollectionFactory $configRecordCollectionFactory
+     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordSearchResultsInterfaceFactory $searchResultsFactory
+     * @param \Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface $collectionProcessor
      */
     public function __construct(
-        ResourceConfigRecord $resource,
-        ConfigRecordInterfaceFactory $configRecordFactory,
-        ConfigRecordCollectionFactory $configRecordCollectionFactory,
-        ConfigRecordSearchResultsInterfaceFactory $searchResultsFactory,
-        CollectionProcessorInterface $collectionProcessor
+        private readonly ResourceConfigRecord $resource,
+        private readonly ConfigRecordInterfaceFactory $configRecordFactory,
+        private readonly ConfigRecordCollectionFactory $configRecordCollectionFactory,
+        private readonly ConfigRecordSearchResultsInterfaceFactory $searchResultsFactory,
+        private readonly CollectionProcessorInterface $collectionProcessor
     ) {
-        $this->resource = $resource;
-        $this->configRecordFactory = $configRecordFactory;
-        $this->configRecordCollectionFactory = $configRecordCollectionFactory;
-        $this->searchResultsFactory = $searchResultsFactory;
-        $this->collectionProcessor = $collectionProcessor;
     }
 
     /**
      * @inheritDoc
      */
-    public function save(ConfigRecordInterface $configRecord)
+    public function save(ConfigRecordInterface $configRecord): ConfigRecordInterface
     {
         try {
             $this->resource->save($configRecord);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
-                'Could not save the configRecord: %1',
+                'Could not save the Config Record : %1',
                 $exception->getMessage()
             ));
         }
@@ -87,12 +58,12 @@ class ConfigRecordRepository implements ConfigRecordRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function get($configRecordId)
+    public function get(string $entityId): ConfigRecordInterface
     {
         $configRecord = $this->configRecordFactory->create();
-        $this->resource->load($configRecord, $configRecordId);
+        $this->resource->load($configRecord, $entityId);
         if (!$configRecord->getId()) {
-            throw new NoSuchEntityException(__('ConfigRecord with id "%1" does not exist.', $configRecordId));
+            throw new NoSuchEntityException(__('Config Record with id "%1" does not exist.', $entityId));
         }
         return $configRecord;
     }
@@ -101,8 +72,9 @@ class ConfigRecordRepository implements ConfigRecordRepositoryInterface
      * @inheritDoc
      */
     public function getList(
-        \Magento\Framework\Api\SearchCriteriaInterface $criteria
-    ) {
+        SearchCriteriaInterface $criteria
+    ): ConfigRecordSearchResultsInterface
+    {
         $collection = $this->configRecordCollectionFactory->create();
 
         $this->collectionProcessor->process($criteria, $collection);
@@ -123,7 +95,7 @@ class ConfigRecordRepository implements ConfigRecordRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function delete(ConfigRecordInterface $configRecord)
+    public function delete(ConfigRecordInterface $configRecord): bool
     {
         try {
             $configRecordModel = $this->configRecordFactory->create();
@@ -131,7 +103,7 @@ class ConfigRecordRepository implements ConfigRecordRepositoryInterface
             $this->resource->delete($configRecordModel);
         } catch (\Exception $exception) {
             throw new CouldNotDeleteException(__(
-                'Could not delete the ConfigRecord: %1',
+                'Could not delete the Config Record: %1',
                 $exception->getMessage()
             ));
         }
@@ -141,9 +113,9 @@ class ConfigRecordRepository implements ConfigRecordRepositoryInterface
     /**
      * @inheritDoc
      */
-    public function deleteById($configRecordId)
+    public function deleteById(string $entityId): bool
     {
-        return $this->delete($this->get($configRecordId));
+        return $this->delete($this->get($entityId));
     }
 }
 

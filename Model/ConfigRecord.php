@@ -3,6 +3,7 @@
  * Copyright © ronangr1. All rights reserved.
  * See COPYING.txt for license details.
  */
+
 declare(strict_types=1);
 
 namespace Ronangr1\SystemConfigWhoDidThisLogger\Model;
@@ -12,11 +13,10 @@ use Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterface;
 
 class ConfigRecord extends AbstractModel implements ConfigRecordInterface
 {
-
     /**
      * @inheritDoc
      */
-    public function _construct()
+    public function _construct(): void
     {
         $this->_init(ResourceModel\ConfigRecord::class);
     }
@@ -24,7 +24,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function getEntityId()
+    public function getEntityId(): string
     {
         return $this->getData(self::ENTITY_ID);
     }
@@ -32,7 +32,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function setEntityId($entityId)
+    public function setEntityId($entityId): ConfigRecordInterface
     {
         return $this->setData(self::ENTITY_ID, $entityId);
     }
@@ -40,7 +40,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function getAuthor()
+    public function getAuthor(): ?string
     {
         return $this->getData(self::AUTHOR);
     }
@@ -48,7 +48,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function setAuthor($author)
+    public function setAuthor(string $author): ConfigRecordInterface
     {
         return $this->setData(self::AUTHOR, $author);
     }
@@ -56,7 +56,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function getPath()
+    public function getPath(): ?string
     {
         return $this->getData(self::PATH);
     }
@@ -64,7 +64,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function setPath($path)
+    public function setPath(string $path): ConfigRecordInterface
     {
         return $this->setData(self::PATH, $path);
     }
@@ -72,7 +72,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function getOldValue()
+    public function getOldValue(): ?string
     {
         return $this->getData(self::OLD_VALUE);
     }
@@ -80,7 +80,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function setOldValue($oldValue)
+    public function setOldValue(string $oldValue): ConfigRecordInterface
     {
         return $this->setData(self::OLD_VALUE, $oldValue);
     }
@@ -88,7 +88,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function getNewValue()
+    public function getNewValue(): ?string
     {
         return $this->getData(self::NEW_VALUE);
     }
@@ -96,7 +96,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function setNewValue($newValue)
+    public function setNewValue(string $newValue): ConfigRecordInterface
     {
         return $this->setData(self::NEW_VALUE, $newValue);
     }
@@ -104,7 +104,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function getScope()
+    public function getScope(): string
     {
         return $this->getData(self::SCOPE);
     }
@@ -112,7 +112,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function setScope($scope)
+    public function setScope(string $scope): ConfigRecordInterface
     {
         return $this->setData(self::SCOPE, $scope);
     }
@@ -120,7 +120,7 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function getRecordedAt()
+    public function getRecordedAt(): ?string
     {
         return $this->getData(self::RECORDED_AT);
     }
@@ -128,9 +128,9 @@ class ConfigRecord extends AbstractModel implements ConfigRecordInterface
     /**
      * @inheritDoc
      */
-    public function setRecordedAt($recordedAt)
+    public function setRecordedAt(string $recordAt): ConfigRecordInterface
     {
-        return $this->setData(self::RECORDED_AT, $recordedAt);
+        return $this->setData(self::RECORDED_AT, $recordAt);
     }
 }
 

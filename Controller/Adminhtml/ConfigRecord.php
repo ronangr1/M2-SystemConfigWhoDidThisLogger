@@ -10,11 +10,10 @@ namespace Ronangr1\SystemConfigWhoDidThisLogger\Controller\Adminhtml;
 
 use Magento\Backend\App\Action;
 use Magento\Backend\Model\View\Result\Page;
+
 abstract class ConfigRecord extends Action
 {
     /**
-     * Init page
-     *
      * @param \Magento\Backend\Model\View\Result\Page $resultPage
      * @return \Magento\Backend\Model\View\Result\Page
      */

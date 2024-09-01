@@ -15,4 +15,11 @@
     <type name="Magento\Framework\App\Config\Value">
         <plugin name="app_config_value_plugin" type="Ronangr1\SystemConfigWhoDidThisLogger\Plugin\App\Config\Value" disabled="false" />
     </type>
+    <type name="Ronangr1\SystemConfigWhoDidThisLogger\Service\Cache">
+        <arguments>
+            <argument name="cacheTypes" xsi:type="array">
+                <item name="config" xsi:type="string">config</item>
+            </argument>
+        </arguments>
+    </type>
 </config>

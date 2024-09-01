@@ -8,6 +8,7 @@ declare(strict_types=1);
 
 namespace Ronangr1\SystemConfigWhoDidThisLogger\Api;
 
+use Magento\Framework\Api\SearchCriteriaInterface;
 use Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterface;
 
 interface ConfigRecordRepositoryInterface
@@ -20,7 +21,7 @@ interface ConfigRecordRepositoryInterface
      */
     public function save(
         ConfigRecordInterface $configRecord
-    );
+    ): ConfigRecordInterface;
 
     /**
      * Retrieve Config Record
@@ -28,7 +29,7 @@ interface ConfigRecordRepositoryInterface
      * @return \Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function get($entityId);
+    public function get(string $entityId): ConfigRecordInterface;
 
     /**
      * Retrieve Config Records matching the specified criteria.
@@ -37,8 +38,8 @@ interface ConfigRecordRepositoryInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     public function getList(
-        \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
-    );
+        SearchCriteriaInterface $searchCriteria
+    ): Data\ConfigRecordSearchResultsInterface;
 
     /**
      * Delete Config Record
@@ -48,15 +49,15 @@ interface ConfigRecordRepositoryInterface
      */
     public function delete(
         ConfigRecordInterface $configRecord
-    );
+    ): bool;
 
     /**
      * Delete Config Record by ID
-     * @param string $configrecordId
+     * @param string $entityId
      * @return bool true on success
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function deleteById($configrecordId);
+    public function deleteById(string $entityId): bool;
 }
 
