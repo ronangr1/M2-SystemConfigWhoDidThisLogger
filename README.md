@@ -43,12 +43,12 @@ No settings needed.
 
 ## Support
 
-Raise a new [request](https://github.com/opengento/magento2-hoodoor-login/issues) to the issue tracker.
+Raise a new [request](https://github.com/ronangr1//M2-SystemConfigWhoDidThisLogger/issues) to the issue tracker.
 
 ## Authors
 
 - **ronangr1** - *Maintainer* - [![GitHub followers](https://img.shields.io/github/followers/ronangr1.svg?style=social)](https://github.com/ronangr1)
-- **Contributors** - *Contributor* - [![GitHub contributors](https://img.shields.io/github/contributors/opengento/magento2-store-path-url.svg?style=flat-square)](https://github.com/ronangr1/magento2-systemconfigwhodidthislogger/graphs/contributors)
+- **Contributors** - *Contributor* - [![GitHub contributors](https://img.shields.io/github/contributors/ronangr1/module-systemconfigwhodidthislogger.svg?style=flat-square)](https://github.com/ronangr1/magento2-systemconfigwhodidthislogger/graphs/contributors)
 
 ## License
 
