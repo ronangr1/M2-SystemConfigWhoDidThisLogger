@@ -10,7 +10,7 @@ This module allows you to record any changes made to the configuration of your M
 - [Setup](#setup)
     - [Composer installation](#composer-installation)
     - [Setup the module](#setup-the-module)
-- [Settings](#settings)
+- [Documentation](#documentation)
 - [Support](#support)
 - [Authors](#authors)
 - [License](#license)
@@ -37,9 +37,9 @@ bin/magento setup:upgrade
 
 **If you are in production mode, do not forget to recompile and redeploy the static resources.**
 
-## Settings
+## Documentation
 
-No settings needed.
+Go to `Store > Config Records` to see who the fuck changed the configuration values.
 
 ## Support
 
