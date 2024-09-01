@@ -3,7 +3,7 @@
 [![Latest Stable Version](https://img.shields.io/packagist/v/ronangr1/module-systemconfigwhodidthislogger.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-systemconfigwhodidthislogger)
 [![License: MIT](https://img.shields.io/github/license/ronangr1/magento2-systemconfigwhodidthislogger.svg?style=flat-square)](./LICENSE)
 [![Packagist](https://img.shields.io/packagist/dt/ronangr1/module-systemconfigwhodidthislogger.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-systemconfigwhodidthislogger/stats)
-[![Packagist](https://img.shields.io/packagist/dm/opengento/module-hoodoor.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-systemconfigwhodidthislogger/stats)
+[![Packagist](https://img.shields.io/packagist/dm/ronangr1/module-systemconfigwhodidthislogger.svg?style=flat-square)](https://packagist.org/packages/ronangr1/module-systemconfigwhodidthislogger/stats)
 
 This module allows you to record any changes made to the configuration of your Magento 2 application
 
