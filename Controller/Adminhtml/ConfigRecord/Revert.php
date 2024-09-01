@@ -12,19 +12,27 @@ use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Config\Storage\WriterInterface;
 use Ronangr1\SystemConfigWhoDidThisLogger\Api\ConfigRecordRepositoryInterface;
 use Ronangr1\SystemConfigWhoDidThisLogger\Controller\Adminhtml\ConfigRecord;
+use Ronangr1\SystemConfigWhoDidThisLogger\Service\Cache;
 
 class Revert extends ConfigRecord
 {
+    /**
+     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Api\ConfigRecordRepositoryInterface $configRecordRepository
+     * @param \Magento\Framework\App\Config\Storage\WriterInterface $writer
+     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Service\Cache $cache
+     * @param \Magento\Backend\App\Action\Context $context
+     */
     public function __construct(
         private readonly ConfigRecordRepositoryInterface $configRecordRepository,
         private readonly WriterInterface $writer,
+        private readonly Cache $cache,
         Context $context
     ) {
         parent::__construct($context);
     }
 
     /**
-     * Delete action
+     * Revert action
      *
      * @return \Magento\Framework\Controller\ResultInterface
      */
@@ -39,6 +47,7 @@ class Revert extends ConfigRecord
                 if($configRecord->getEntityId()) {
                     $this->writer->save($configRecord->getPath(), $configRecord->getOldValue(), $configRecord->getScope());
                     $this->configRecordRepository->delete($configRecord);
+                    $this->cache->clean();
                     $this->messageManager->addSuccessMessage(__('You reverted the record.'));
                 }
                 return $resultRedirect->setPath('*/*/');
