@@ -12,15 +12,8 @@ use Magento\Framework\Api\SearchResultsInterface;
 
 interface ConfigRecordSearchResultsInterface extends SearchResultsInterface
 {
-    /**
-     * @return \Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterface[]
-     */
     public function getItems(): array;
 
-    /**
-     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterface[] $items
-     * @return $this
-     */
     public function setItems(array $items): static;
 }
 

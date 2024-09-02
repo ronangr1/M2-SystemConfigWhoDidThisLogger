@@ -14,12 +14,6 @@ use Ronangr1\SystemConfigWhoDidThisLogger\Service\System\Config\Record;
 
 class Value
 {
-
-    /**
-     * @param \Magento\Backend\Model\Auth\Session $authSession
-     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Service\System\Config\Record $recordService
-     * @param \Psr\Log\LoggerInterface $logger
-     */
     public function __construct(
         private readonly Session $authSession,
         private readonly Record $recordService,
@@ -27,11 +21,6 @@ class Value
     ) {
     }
 
-    /**
-     * @param \Magento\Framework\App\Config\Value $subject
-     * @param $result
-     * @return void
-     */
     public function afterIsValueChanged(\Magento\Framework\App\Config\Value $subject, $result): void
     {
         if ($result) {

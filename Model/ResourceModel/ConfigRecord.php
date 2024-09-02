@@ -11,13 +11,11 @@ use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 
 class ConfigRecord extends AbstractDb
 {
+    private const TABLE_NAME = 'system_config_record';
 
-    /**
-     * @inheritDoc
-     */
-    protected function _construct()
+    protected function _construct(): void
     {
-        $this->_init('system_config_record', 'entity_id');
+        $this->_init(self::TABLE_NAME, 'entity_id');
     }
 }
 

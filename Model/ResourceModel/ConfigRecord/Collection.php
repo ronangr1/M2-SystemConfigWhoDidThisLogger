@@ -8,23 +8,18 @@ declare(strict_types=1);
 namespace Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Ronangr1\SystemConfigWhoDidThisLogger\Model\ConfigRecord;
+use Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord as ConfigRecordResourceModel;
 
 class Collection extends AbstractCollection
 {
-
-    /**
-     * @inheritDoc
-     */
     protected $_idFieldName = 'entity_id';
 
-    /**
-     * @inheritDoc
-     */
-    protected function _construct()
+    protected function _construct(): void
     {
         $this->_init(
-            \Ronangr1\SystemConfigWhoDidThisLogger\Model\ConfigRecord::class,
-            \Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord::class
+            ConfigRecord::class,
+            ConfigRecordResourceModel::class
         );
     }
 }

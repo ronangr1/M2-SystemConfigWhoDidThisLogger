@@ -13,10 +13,6 @@ use Magento\Backend\Model\View\Result\Page;
 
 abstract class ConfigRecord extends Action
 {
-    /**
-     * @param \Magento\Backend\Model\View\Result\Page $resultPage
-     * @return \Magento\Backend\Model\View\Result\Page
-     */
     public function initPage(Page $resultPage): Page
     {
         $resultPage->setActiveMenu(self::ADMIN_RESOURCE)

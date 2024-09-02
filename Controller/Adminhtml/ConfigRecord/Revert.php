@@ -10,18 +10,13 @@ namespace Ronangr1\SystemConfigWhoDidThisLogger\Controller\Adminhtml\ConfigRecor
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Config\Storage\WriterInterface;
+use Magento\Framework\Controller\ResultInterface;
 use Ronangr1\SystemConfigWhoDidThisLogger\Api\ConfigRecordRepositoryInterface;
 use Ronangr1\SystemConfigWhoDidThisLogger\Controller\Adminhtml\ConfigRecord;
 use Ronangr1\SystemConfigWhoDidThisLogger\Service\Cache;
 
 class Revert extends ConfigRecord
 {
-    /**
-     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Api\ConfigRecordRepositoryInterface $configRecordRepository
-     * @param \Magento\Framework\App\Config\Storage\WriterInterface $writer
-     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Service\Cache $cache
-     * @param \Magento\Backend\App\Action\Context $context
-     */
     public function __construct(
         private readonly ConfigRecordRepositoryInterface $configRecordRepository,
         private readonly WriterInterface $writer,
@@ -31,12 +26,7 @@ class Revert extends ConfigRecord
         parent::__construct($context);
     }
 
-    /**
-     * Revert action
-     *
-     * @return \Magento\Framework\Controller\ResultInterface
-     */
-    public function execute()
+    public function execute(): ResultInterface
     {
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();

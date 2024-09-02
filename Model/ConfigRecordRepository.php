@@ -23,13 +23,6 @@ use Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord\Colle
 
 class ConfigRecordRepository implements ConfigRecordRepositoryInterface
 {
-    /**
-     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord $resource
-     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordInterfaceFactory $configRecordFactory
-     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord\CollectionFactory $configRecordCollectionFactory
-     * @param \Ronangr1\SystemConfigWhoDidThisLogger\Api\Data\ConfigRecordSearchResultsInterfaceFactory $searchResultsFactory
-     * @param \Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface $collectionProcessor
-     */
     public function __construct(
         private readonly ResourceConfigRecord $resource,
         private readonly ConfigRecordInterfaceFactory $configRecordFactory,
@@ -55,9 +48,6 @@ class ConfigRecordRepository implements ConfigRecordRepositoryInterface
         return $configRecord;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function get(string $entityId): ConfigRecordInterface
     {
         $configRecord = $this->configRecordFactory->create();
@@ -68,9 +58,6 @@ class ConfigRecordRepository implements ConfigRecordRepositoryInterface
         return $configRecord;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function getList(
         SearchCriteriaInterface $criteria
     ): ConfigRecordSearchResultsInterface
@@ -93,7 +80,7 @@ class ConfigRecordRepository implements ConfigRecordRepositoryInterface
     }
 
     /**
-     * @inheritDoc
+     * @throws \Magento\Framework\Exception\CouldNotDeleteException
      */
     public function delete(ConfigRecordInterface $configRecord): bool
     {
@@ -110,9 +97,6 @@ class ConfigRecordRepository implements ConfigRecordRepositoryInterface
         return true;
     }
 
-    /**
-     * @inheritDoc
-     */
     public function deleteById(string $entityId): bool
     {
         return $this->delete($this->get($entityId));

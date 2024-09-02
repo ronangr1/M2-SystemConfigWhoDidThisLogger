@@ -13,31 +13,12 @@ use Ronangr1\SystemConfigWhoDidThisLogger\Model\ResourceModel\ConfigRecord\Colle
 
 class DataProvider extends AbstractDataProvider
 {
-
-    /**
-     * @inheritDoc
-     */
     protected $collection;
 
-    /**
-     * @var DataPersistorInterface
-     */
-    protected $dataPersistor;
+    protected DataPersistorInterface $dataPersistor;
 
-    /**
-     * @var array
-     */
-    protected $loadedData;
+    protected array $loadedData;
 
-    /**
-     * @param string $name
-     * @param string $primaryFieldName
-     * @param string $requestFieldName
-     * @param CollectionFactory $collectionFactory
-     * @param DataPersistorInterface $dataPersistor
-     * @param array $meta
-     * @param array $data
-     */
     public function __construct(
         $name,
         $primaryFieldName,
@@ -52,10 +33,7 @@ class DataProvider extends AbstractDataProvider
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
-    /**
-     * @inheritDoc
-     */
-    public function getData()
+    public function getData(): ?array
     {
         if (isset($this->loadedData)) {
             return $this->loadedData;

@@ -20,14 +20,19 @@ class Cache
     ) {
     }
 
-    public function clean(): void
+    public function clean(): bool
     {
-        $types = $this->cacheTypes;
-        foreach ($types as $type) {
-            $this->cacheTypeList->cleanType($type);
+        try {
+            $types = $this->cacheTypes;
+            foreach ($types as $type) {
+                $this->cacheTypeList->cleanType($type);
+            }
+            foreach ($this->cacheFrontendPool as $cacheFrontend) {
+                $cacheFrontend->getBackend()->clean();
+            }
+        } catch (\Exception) {
+            return false;
         }
-        foreach ($this->cacheFrontendPool as $cacheFrontend) {
-            $cacheFrontend->getBackend()->clean();
-        }
+        return true;
     }
 }

@@ -21,15 +21,20 @@ class Record
     }
 
     /**
-     * @throws LocalizedException
+     * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function record(array $data): void
+    public function record(array $data): bool
     {
         if (empty($data)) {
             throw new LocalizedException(__("Array cannot be empty."));
         }
-        $record = $this->configRecordFactory->create();
-        $record->setData($data);
-        $this->configRecordRepository->save($record);
+        try {
+            $record = $this->configRecordFactory->create();
+            $record->setData($data);
+            $this->configRecordRepository->save($record);
+        } catch (\Exception) {
+            return false;
+        }
+        return true;
     }
 }
