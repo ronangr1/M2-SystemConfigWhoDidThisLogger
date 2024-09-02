@@ -48,7 +48,7 @@ Raise a new [request](https://github.com/ronangr1//M2-SystemConfigWhoDidThisLogg
 ## Authors
 
 - **ronangr1** - *Maintainer* - [![GitHub followers](https://img.shields.io/github/followers/ronangr1.svg?style=social)](https://github.com/ronangr1)
-- **Contributors** - *Contributor* - [![GitHub contributors](https://img.shields.io/github/contributors/ronangr1/module-systemconfigwhodidthislogger.svg?style=flat-square)](https://github.com/ronangr1/M2-SystemConfigWhoDidThisLogger/graphs/contributors)
+- **Contributors** - *Contributor* - [![GitHub contributors](https://img.shields.io/github/contributors/ronangr1/m2-systemconfigwhodidthislogger.svg?style=flat-square)](https://github.com/ronangr1/M2-SystemConfigWhoDidThisLogger/graphs/contributors)
 
 ## License
 
