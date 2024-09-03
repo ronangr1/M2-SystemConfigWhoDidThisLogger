@@ -43,7 +43,7 @@ Go to `Store > Config Records` to see who the fuck changed the configuration val
 
 ## Support
 
-Raise a new [request](https://github.com/ronangr1//M2-SystemConfigWhoDidThisLogger/issues) to the issue tracker.
+Raise a new [request](https://github.com/ronangr1/M2-SystemConfigWhoDidThisLogger/issues) to the issue tracker.
 
 ## Authors
 
